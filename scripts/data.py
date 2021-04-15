@@ -54,16 +54,13 @@ def return_figures(countries=country_default):
 		data_frames.append(data)
 
 
-	# CO2 emissions (kt)
-	# first chart plots CO2 emissions metric tons per capita
+	
+	# first chart plots # CO2 emissions (kt)
 	# as a line chart
 	graph_one = []
 	df = pd.DataFrame(data_frames[0])
 
 	# filter and sort values for the visualization
-	# filtering plots the countries in decreasing order by their values
-	#df_one = df_one[(df_one['date'] == '2015') | (df_one['date'] == '1990')]
-	#df_one.sort_values('value', ascending=False, inplace=True)
 	df.sort_values(by=['country','date'], inplace=True)
 
 	# this country list is re-used by all the charts to ensure legends have the same
@@ -85,9 +82,12 @@ def return_figures(countries=country_default):
 		)
 
 	layout_one = dict(title = 'CO2 emissions (kt) <br> 1990 to 2015',
-					xaxis = dict(title = 'Year',
-						autotick=False, tick0=1990, dtick=5),
+					xaxis = dict(title = 'Year', autotick=False, tick0=1990, dtick=5),
 					yaxis = dict(title = 'kt'),
+					#font = dict(family = 'arial'),
+					autosize = True,
+					#width = 700,
+					#height = 500,
 					)
 	
 
@@ -97,12 +97,9 @@ def return_figures(countries=country_default):
 	df = pd.DataFrame(data_frames[1])
 
 	# filter and sort values for the visualization
-	# filtering plots the countries in decreasing order by their values
-	#df_one = df_one[(df_one['date'] == '2015') | (df_one['date'] == '1990')]
-	#df_one.sort_values('value', ascending=False, inplace=True)
 	df.sort_values(by=['country','date'], inplace=True)
 
-	# chart 1
+	# chart 2
 	for country in countrylist:
 		x_val = df[df['country'] == country].date.tolist()
 		y_val = df[df['country'] == country].value.tolist()
@@ -128,12 +125,9 @@ def return_figures(countries=country_default):
 	df = pd.DataFrame(data_frames[2])
 
 	# filter and sort values for the visualization
-	# filtering plots the countries in decreasing order by their values
-	#df_one = df_one[(df_one['date'] == '2015') | (df_one['date'] == '1990')]
-	#df_one.sort_values('value', ascending=False, inplace=True)
 	df.sort_values(by=['country','date'], inplace=True)
 
-	# chart 1
+	# chart 3
 	for country in countrylist:
 		x_val = df[df['country'] == country].date.tolist()
 		y_val = df[df['country'] == country].value.tolist()
@@ -157,6 +151,8 @@ def return_figures(countries=country_default):
 	# as a line chart
 	graph_four = []
 	df = pd.DataFrame(data_frames[3])
+
+	# filter and sort values for the visualization
 	df.sort_values(by=['country','date'], inplace=True)
 	
 
@@ -179,12 +175,16 @@ def return_figures(countries=country_default):
 					yaxis = dict(title = '%'),
 					)
 
+
+	# add responsive design for all charts
+	config = dict(responsive = True)
+
 	# append all charts
 	figures = []
 
-	figures.append(dict(data=graph_one, layout=layout_one))
-	figures.append(dict(data=graph_two, layout=layout_two))
-	figures.append(dict(data=graph_three, layout=layout_three))
-	figures.append(dict(data=graph_four, layout=layout_four))
+	figures.append(dict(data=graph_one, layout=layout_one, config=config))
+	figures.append(dict(data=graph_two, layout=layout_two, config=config))
+	figures.append(dict(data=graph_three, layout=layout_three, config=config))
+	figures.append(dict(data=graph_four, layout=layout_four, config=config))
 
 	return figures
