@@ -8,7 +8,7 @@ pulled directly from the API and then visualized using Plotly.
 The purpose of this project is to learn more about plotly and the 
 deployment about web applications on heroku while giving some 
 interesting insights about CO2 Emissions and Energy Consumption of the
-Top 10 World Economies.
+Top 10 World Economies in 2015.
 
 ## About the data
 
@@ -23,16 +23,26 @@ Link to World Bank Indicators Section Climate Change [https://data.worldbank.org
 
 ## Heroku deployment guide
 
-To install the flask app, you need:
-- python3
-- python packages in the requirements.txt file
- 
- Install the packages with
-``` 
- pip install -r requirements.txt
-```
+Pre-Requesites: 
+- Heroku Account
+- Python Installation
+- Git Installation
+
+Process Steps:
+- create virtual environment: python -m venv \<name>
+- activate environment: .\\\<name>\Scripts\activate
+- pip install flask pandas plotly gunicorn
+- uncomment in myapp.py #app.run(host='127.0.0.1', port=5000, debug=True)
+- touch Procfile, insert web gunicorn \<webapp-folder>:app
+- pip freeze > requirements.txt
+- git init
+- git add .
+- git commit -m "xyz"
+- heroku create \<web-app-name>
+- git remote -v
+- git push heroku master
 
 ## Ressources
-
-On a MacOS/linux system, installation is easy. Open a terminal, and go into 
-the directory with the flask app files. Run `python worldbank.py` in the terminal.
+- https://www.udacity.com/
+- https://devcenter.heroku.com/articles/heroku-cli
+- https://plotly.com/nodejs/setting-graph-size/
