@@ -13,6 +13,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="textchange.js"></script> -->
 </head>
 
 <body>
@@ -62,46 +64,98 @@
 
             <h2 id="tag-line">CO2 Emissions and Energy Consumption</h2>
             <h4 id="tag-line" class="text-muted">Top 10 World Economies</h4>
+            <button type="button" class="btn btn-outline-info" data-toggle="collapse" data-target=".text0">
+                Chart explanations
+            </button>
             
         </div>
-        
+
         <!--charts-->       
-        <div id="charts" class="container mt-3 text-center">
+        <div id="charts" class="container p-3 text-center">
                     
             <!--top two charts-->       
             <div class="row">
                 <div class="col-6">
+                    <!-- chart -->
                     <div id="{{ids[0]}}"></div>
+                    <!-- explanation -->
+                    <div class="collapse text0" style="float: left">
+                          <ul class="text-sm-left font-weight-light">
+                            <li>China accounts for the highest absolute CO2 emissions in the last 10 years, 
+                                the emmissions are sharply rising from 2000 to 2013 and are leveling off in 2014/2015 </li>
+                            <li>Ranking second in emissions, the United states are roughly outputting 
+                                5 billion tons per year since the early 1990ies </li>
+                            <li>India is experiencing a moderate but continues increasing trend in emissions since 
+                                2005 while the rest of the economies are rather steady </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-6">
+                    <!-- chart -->
                     <div id="{{ids[1]}}"></div>
+                    <!-- explanation -->
+                    <div class="collapse text0" style="float: left">
+                        <p style="font-style: italic;">It makes sense to use a relative indicator such as the 
+                            emissions in metric tons per capita to compare the impact. The definition of the 
+                            indicator can be found on the bottom of the webapp.</p>
+                        <ul class="text-sm-left font-weight-light">
+                            <li>While China is on the top rank for the absolute emissions, USA and Canada 
+                                have still double the emissions per capita compared   to China in 2015</li>
+                            <li>A moderate downward trend is visible for most of the economies in 
+                                recent years; China, India and Brazil are the exceptions</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <!--bottom two charts-->        
             <div class="row mb-6">
                 <div class="col-6"> 
-                    <div id="chart3">
-                        <div id="{{ids[2]}}"></div>
+                    <!-- chart -->
+                    <div id="{{ids[2]}}"></div>
+                    <!-- explanation -->
+                    <div class="collapse text0" style="float: left">
+                        <ul class="text-sm-left font-weight-light">
+                            <li>Canada is ranking number one followed by the USA throughout the timeline</li>
+                            <li>One can see that there is a connection between the power consumption and 
+                                CO2 emission charts per capita</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div id="chart4">
-                        <div id="{{ids[3]}}"></div>
+                    <!-- chart -->
+                    <div id="{{ids[3]}}"></div>
+                   <!-- explanation -->
+                    <div class="collapse text0" style="float: left">
+                        <ul class="text-sm-left font-weight-light">
+                            <li>Brazil accounts for the highest proportion of renewable energy 
+                                consumption in recent years</li>
+                            <li>There is a relative decline of usage of renewables (shift to conventional energy) 
+                                in China and India over time</li>
+                            <li>Canada's higher proportion of renewable energy compared to the USA possibly explains
+                                why the CO2 emissions per capita (chart upper right) are lower despite the 
+                                higher electric power consumption per capita (chart lower left)</li>
+                        </ul>
                     </div>
                 <div>
             </div>
+
+
         
         </div>
-    <div>       
-</div>
 
-<div class="row">
-    <div class ="column-11">
-        * Carbon emissions per capita are measured as the total amount of carbon dioxide emitted by the country as a consequence of all relevant human (production and consumption) activities, divided by the population of the country.
-    </div>
-</div>
+        <div class="row mt-3">
+            <div class ="column-11">
+                <p class="font-weight-light">
+                    * Carbon emissions per capita are measured as the total amount of carbon dioxide emitted 
+                    by the country as a consequence of all relevant human (production and consumption) activities, 
+                    divided by the population of the country.
+                </p>
+            </div>
+        </div>
 
+    </div>  
+</div>
 
 <!--footer section-->               
 <div id="footer" class="container"></div>
@@ -119,7 +173,8 @@
         for(var i in figures) {
             Plotly.plot(ids[i],
                 figures[i].data,
-                figures[i].layout || {});
+                figures[i].layout,
+                figures[i].config || {});
         }
     </script>
     
