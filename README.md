@@ -32,7 +32,7 @@ Process Steps:
 - create virtual environment: python -m venv \<name>
 - activate environment: .\\\<name>\Scripts\activate
 - pip install flask pandas plotly gunicorn
-- uncomment in myapp.py #app.run(host='127.0.0.1', port=5000, debug=True)
+- comment in myapp.py #app.run(host='127.0.0.1', port=5000, debug=True)
 - touch Procfile, insert web gunicorn \<webapp-folder>:app
 - pip freeze > requirements.txt
 - git init
