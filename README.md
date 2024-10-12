@@ -1,4 +1,4 @@
-# Link to Webapp [https://climate-webapp.herokuapp.com](https://climate-webapp.herokuapp.com)
+# Link to Webapp (link no longer active!) [https://climate-webapp.herokuapp.com](https://climate-webapp.herokuapp.com)
 
 # World Bank API Data Dashboard - Climate Change
 
