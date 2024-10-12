@@ -33,7 +33,7 @@ def return_figures(countries=country_default):
 
 	# pull data from World Bank API
 	for indicator in indicators:
-		url = 'http://api.worldbank.org/v2/countries/' + country_filter +\
+		url = 'https://api.worldbank.org/v2/countries/' + country_filter +\
 		'/indicators/' + indicator +'?date=1990:2015&per_page=1000&format=json'
 		urls.append(url)
 		print(url)
